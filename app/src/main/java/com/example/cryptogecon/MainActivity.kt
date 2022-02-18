@@ -4,6 +4,11 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.telecom.Call
 import android.util.Log
+import androidx.navigation.findNavController
+import androidx.navigation.ui.AppBarConfiguration
+import androidx.navigation.ui.setupActionBarWithNavController
+import androidx.navigation.ui.setupWithNavController
+import com.google.android.material.bottomnavigation.BottomNavigationView
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -14,12 +19,18 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        val retrofit = RetrofitInstance.getRetrofitInstance().create(ApiService::class.java)
+        val bottomNavigationView =findViewById<BottomNavigationView>(R.id.bottomNavigationView)
+        val navController = findNavController(R.id.fragment)
+        val appBarConfiguration = AppBarConfiguration(setOf(R.id.firstFragment, R.id.settingFragment))
+        setupActionBarWithNavController(navController, appBarConfiguration)
+        bottomNavigationView.setupWithNavController(navController)
 
-        CoroutineScope(Dispatchers.IO).launch {
-            val getGecon = retrofit.getCrypto()
-            Log.e("TAG", getGecon.body().toString())
-
-        }
+//        val retrofit = RetrofitInstance.getRetrofitInstance().create(ApiService::class.java)
+//
+//        CoroutineScope(Dispatchers.IO).launch {
+//            val getGecon = retrofit.getCrypto()
+//            Log.e("TAG", getGecon.body().toString())
+//
+//        }
     }
 }
