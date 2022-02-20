@@ -15,22 +15,16 @@ import kotlinx.coroutines.launch
 import okhttp3.Dispatcher
 
 class MainActivity : AppCompatActivity() {
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        val bottomNavigationView =findViewById<BottomNavigationView>(R.id.bottomNavigationView)
+        val bottomNavigationView = findViewById<BottomNavigationView>(R.id.bottomNavigationView)
         val navController = findNavController(R.id.fragment)
-        val appBarConfiguration = AppBarConfiguration(setOf(R.id.firstFragment, R.id.settingFragment))
+        val appBarConfiguration =
+            AppBarConfiguration(setOf(R.id.firstFragment, R.id.settingFragment))
         setupActionBarWithNavController(navController, appBarConfiguration)
         bottomNavigationView.setupWithNavController(navController)
-
-//        val retrofit = RetrofitInstance.getRetrofitInstance().create(ApiService::class.java)
-//
-//        CoroutineScope(Dispatchers.IO).launch {
-//            val getGecon = retrofit.getCrypto()
-//            Log.e("TAG", getGecon.body().toString())
-//
-//        }
     }
 }

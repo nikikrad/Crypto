@@ -5,10 +5,9 @@
     android:layout_height="match_parent"
     tools:context=".FirstFragment">
 
-   <TextView
-       android:layout_width="wrap_content"
-       android:layout_height="200dp"
-       android:text="First"
-       android:textSize="100dp"/>
+   <androidx.recyclerview.widget.RecyclerView
+       android:id="@+id/rv_Crypto"
+       android:layout_width="match_parent"
+       android:layout_height="match_parent"/>
 
 </FrameLayout>
