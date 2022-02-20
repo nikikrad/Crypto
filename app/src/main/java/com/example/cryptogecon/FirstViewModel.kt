@@ -10,7 +10,8 @@ import kotlinx.coroutines.launch
 
 class FirstViewModel(application: Application) : AndroidViewModel(application) {
 
-    lateinit var liveData: MutableLiveData<String> = emptyList<>().toMutableList()
+    lateinit var liveData: MutableLiveData<String>
+    lateinit var supportData: MutableList<String>
 
     init {
         getResponse()
@@ -23,14 +24,16 @@ class FirstViewModel(application: Application) : AndroidViewModel(application) {
         CoroutineScope(Dispatchers.IO).launch {
             val getGecon = retrofit.getCrypto()
             val bodyGecon = getGecon.body()
+            liveData.value = bodyGecon.toString()
 
-            if (getGecon.isSuccessful) {
-                if (bodyGecon != null) {
-                    for(i in 0 until bodyGecon.count()){
-                        liveData.add(bodyGecon[i].id)
-                    }
-                }
-            }
+//            if (getGecon.isSuccessful) {
+//                if (bodyGecon != null) {
+//                    for(i in 0 until bodyGecon.count()){
+//                        liveData.value = supportData
+//                        liveData.value = bodyGecon[i].id
+//                    }
+//                }
+//            }
         }
 
 

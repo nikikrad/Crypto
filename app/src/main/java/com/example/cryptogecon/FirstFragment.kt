@@ -1,6 +1,7 @@
 package com.example.cryptogecon
 
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -13,7 +14,7 @@ class FirstFragment : Fragment() {
 
     lateinit var binding: FragmentFirstBinding
     lateinit var firstViewModel: FirstViewModel
-    lateinit var responseBody: MutableList<CryptoResponse>
+    lateinit var responseBody: MutableList<String>
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -29,9 +30,10 @@ class FirstFragment : Fragment() {
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-//        firstViewModel.liveData.observe(this, Observer {
-//            responseBody.add(it)
-//        })
+        firstViewModel.liveData.observe(this, Observer {
+            responseBody.add(it)
+            Log.e("KEK", responseBody.toString())
+        })
     }
 
     override fun onDestroy() {
