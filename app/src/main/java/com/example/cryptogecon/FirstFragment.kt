@@ -14,7 +14,7 @@ class FirstFragment : Fragment() {
 
     lateinit var binding: FragmentFirstBinding
     lateinit var firstViewModel: FirstViewModel
-    lateinit var responseBody: MutableList<String>
+    var responseBody: MutableList<String> = emptyList<String>().toMutableList()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -30,7 +30,9 @@ class FirstFragment : Fragment() {
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        firstViewModel.liveData.observe(this, Observer {
+        firstViewModel.getResponse()
+        Thread.sleep(4000)
+        firstViewModel.liveData.observe(viewLifecycleOwner, Observer {
             responseBody.add(it)
             Log.e("KEK", responseBody.toString())
         })

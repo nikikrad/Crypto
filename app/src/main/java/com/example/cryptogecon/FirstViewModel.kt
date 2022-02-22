@@ -4,36 +4,44 @@ import android.app.Application
 import android.util.Log
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.MutableLiveData
+import androidx.lifecycle.ViewModel
+import androidx.lifecycle.viewModelScope
+import com.google.gson.GsonBuilder
+import com.google.gson.JsonParser
+import com.google.gson.internal.GsonBuildConfig
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 
-class FirstViewModel(application: Application) : AndroidViewModel(application) {
+class FirstViewModel : ViewModel() {
 
-    lateinit var liveData: MutableLiveData<String>
-    lateinit var supportData: MutableList<String>
+    fun <T : Any?> MutableLiveData<T>.default(initialValue: T) = apply { setValue(initialValue) }
 
-    init {
-        getResponse()
-    }
+    val liveData = MutableLiveData<String>().default("Initial value!")
 
     fun getResponse() {
 
         val retrofit = RetrofitInstance.getRetrofitInstance().create(ApiService::class.java)
 
-        CoroutineScope(Dispatchers.IO).launch {
+        viewModelScope.launch {
             val getGecon = retrofit.getCrypto()
-            val bodyGecon = getGecon.body()
-            liveData.value = bodyGecon.toString()
-
 //            if (getGecon.isSuccessful) {
-//                if (bodyGecon != null) {
-//                    for(i in 0 until bodyGecon.count()){
-//                        liveData.value = supportData
-//                        liveData.value = bodyGecon[i].id
-//                    }
-//                }
+//            } else Log.e("TAG", "SOSI BIBU")
+//            withContext(Dispatchers.Main) {
+//                val gson = GsonBuilder().setPrettyPrinting().create()
+//                val prettyJson = gson.toJson(
+//                    JsonParser.parseString(
+//                        getGecon.body()?.toString()
+//                    )
+//                )
 //            }
+
+//            val bodyGecon = getGecon.body()
+
+//            liveData.postValue(bodyGecon.toString())
+//            Log.e("TAG", liveData.value.toString())
+
         }
 
 
