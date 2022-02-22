@@ -3,6 +3,7 @@ package com.example.cryptogecon
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 
 class FirstAdapter(
@@ -12,7 +13,7 @@ class FirstAdapter(
     override fun onCreateViewHolder(
         parent: ViewGroup,
         viewType: Int
-    ): FirstAdapter.FirstViewHolder {
+    ): FirstViewHolder {
         val layoutInflater = LayoutInflater.from(parent.context)
         val view =layoutInflater.inflate(R.layout.item_coin, parent, false)
         return FirstViewHolder(view)
@@ -26,9 +27,10 @@ class FirstAdapter(
 
     class FirstViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
 
+        private val name:TextView = itemView.findViewById(R.id.tv_Name)
 
         fun bind(item: CryptoResponse){
-
+            name.text =item.id
         }
 
     }

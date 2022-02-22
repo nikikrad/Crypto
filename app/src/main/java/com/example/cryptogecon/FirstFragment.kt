@@ -17,7 +17,7 @@ class FirstFragment : Fragment() {
 
     lateinit var binding: FragmentFirstBinding
     lateinit var firstViewModel: FirstViewModel
-    var responseBody: MutableList<String> = emptyList<String>().toMutableList()
+    var responseBody: MutableList<CryptoResponse> = emptyList<CryptoResponse>().toMutableList()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -37,17 +37,17 @@ class FirstFragment : Fragment() {
         firstViewModel.liveData.observe(viewLifecycleOwner, Observer {
 //            responseBody.add()
             it.forEach {
-                Log.e("KEK", it.toString())
+                responseBody.add(it)
             }
 //            Log.e("KEK", responseBody.toString())
 //            Log.e("KEK", responseBody.get(0).toString())
         })
         Thread.sleep(2000)
 
-//        val Adapter = FirstAdapter()
-//        binding.rvCrypto.layoutManager =
-//            LinearLayoutManager(activity?.applicationContext, LinearLayoutManager.VERTICAL, false)
-//        binding.rvCrypto.adapter = Adapter
+        val Adapter = FirstAdapter(responseBody)
+        binding.rvCrypto.layoutManager =
+            LinearLayoutManager(activity?.applicationContext, LinearLayoutManager.VERTICAL, false)
+        binding.rvCrypto.adapter = Adapter
     }
 
     override fun onDestroy() {

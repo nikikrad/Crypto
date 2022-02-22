@@ -1,10 +1,10 @@
 package com.example.cryptogecon
 
 data class CryptoResponse(
-    var coins: List<Coin>
+    var id: String
 )
 
-data class Coin(
-    val id: String
-)
+//data class Coin(
+//    val id: String
+//)
 
