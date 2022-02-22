@@ -16,9 +16,8 @@ import kotlinx.coroutines.withContext
 
 class FirstViewModel : ViewModel() {
 
-    fun <T : Any?> MutableLiveData<T>.default(initialValue: T) = apply { setValue(initialValue) }
 
-    val liveData = MutableLiveData<String>().default("Initial value!")
+    val liveData: MutableLiveData<List<CryptoResponse>> = MutableLiveData()
 
     fun getResponse() {
 
@@ -26,20 +25,9 @@ class FirstViewModel : ViewModel() {
 
         viewModelScope.launch {
             val getGecon = retrofit.getCrypto()
-//            if (getGecon.isSuccessful) {
-//            } else Log.e("TAG", "SOSI BIBU")
-//            withContext(Dispatchers.Main) {
-//                val gson = GsonBuilder().setPrettyPrinting().create()
-//                val prettyJson = gson.toJson(
-//                    JsonParser.parseString(
-//                        getGecon.body()?.toString()
-//                    )
-//                )
-//            }
+            val bodyGecon = getGecon.body()
 
-//            val bodyGecon = getGecon.body()
-
-//            liveData.postValue(bodyGecon.toString())
+            liveData.postValue(bodyGecon)
 //            Log.e("TAG", liveData.value.toString())
 
         }

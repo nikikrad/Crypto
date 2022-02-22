@@ -6,8 +6,11 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Adapter
+import android.widget.LinearLayout
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.cryptogecon.databinding.FragmentFirstBinding
 
 class FirstFragment : Fragment() {
@@ -31,11 +34,20 @@ class FirstFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         firstViewModel.getResponse()
-        Thread.sleep(4000)
         firstViewModel.liveData.observe(viewLifecycleOwner, Observer {
-            responseBody.add(it)
-            Log.e("KEK", responseBody.toString())
+//            responseBody.add()
+            it.forEach {
+                Log.e("KEK", it.toString())
+            }
+//            Log.e("KEK", responseBody.toString())
+//            Log.e("KEK", responseBody.get(0).toString())
         })
+        Thread.sleep(2000)
+
+//        val Adapter = FirstAdapter()
+//        binding.rvCrypto.layoutManager =
+//            LinearLayoutManager(activity?.applicationContext, LinearLayoutManager.VERTICAL, false)
+//        binding.rvCrypto.adapter = Adapter
     }
 
     override fun onDestroy() {
