@@ -3,8 +3,9 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Users/nikik/AndroidStudioProjects/CryptoGecon/app/src/main/res/drawable/color_menu.xml" value="0.2462962962962963" />
         <entry key="..\:/Users/nikik/AndroidStudioProjects/CryptoGecon/app/src/main/res/drawable/ic_home.xml" value="0.2111111111111111" />
-        <entry key="..\:/Users/nikik/AndroidStudioProjects/CryptoGecon/app/src/main/res/layout/activity_main.xml" value="0.2015625" />
+        <entry key="..\:/Users/nikik/AndroidStudioProjects/CryptoGecon/app/src/main/res/layout/activity_main.xml" value="0.18" />
         <entry key="..\:/Users/nikik/AndroidStudioProjects/CryptoGecon/app/src/main/res/layout/fragment_first.xml" value="0.2015625" />
         <entry key="..\:/Users/nikik/AndroidStudioProjects/CryptoGecon/app/src/main/res/layout/fragment_setting.xml" value="0.2015625" />
         <entry key="..\:/Users/nikik/AndroidStudioProjects/CryptoGecon/app/src/main/res/layout/item_coin.xml" value="0.36666666666666664" />
