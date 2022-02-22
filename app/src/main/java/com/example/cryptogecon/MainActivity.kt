@@ -2,17 +2,11 @@ package com.example.cryptogecon
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.telecom.Call
-import android.util.Log
 import androidx.navigation.findNavController
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
 import com.google.android.material.bottomnavigation.BottomNavigationView
-import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.launch
-import okhttp3.Dispatcher
 
 class MainActivity : AppCompatActivity() {
 

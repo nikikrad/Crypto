@@ -8,7 +8,7 @@
     <fragment
         android:id="@+id/firstFragment"
         android:name="com.example.cryptogecon.FirstFragment"
-        android:label="Cripto"
+        android:label="Crypto"
         tools:layout="@layout/fragment_first">
         <action
             android:id="@+id/action_firstFragment_to_settingFragment"
