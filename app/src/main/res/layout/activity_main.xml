@@ -13,8 +13,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:menu="@menu/bottom_menu"
-        android:background="#595050"/>
+        app:menu="@menu/bottom_menu"/>
 
     <fragment
         android:id="@+id/fragment"
@@ -25,8 +24,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent"
-
+        app:layout_constraintBottom_toBottomOf="@+id/bottomNavigationView"
         app:navGraph="@navigation/nav_graph"/>
 
 

@@ -9,7 +9,8 @@ import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 
 class FirstAdapter(
-    private val coinList: List<CryptoResponse>
+    private val coinList: List<CryptoResponse>,
+    private val clickListener: (CryptoResponse) -> Unit
 ) : RecyclerView.Adapter<FirstAdapter.FirstViewHolder>() {
 
     override fun onCreateViewHolder(
@@ -18,7 +19,7 @@ class FirstAdapter(
     ): FirstViewHolder {
         val layoutInflater = LayoutInflater.from(parent.context)
         val view = layoutInflater.inflate(R.layout.item_coin, parent, false)
-        return FirstViewHolder(view)
+        return FirstViewHolder(view, clickListener)
     }
 
     override fun onBindViewHolder(holder: FirstViewHolder, position: Int) {
@@ -27,7 +28,10 @@ class FirstAdapter(
 
     override fun getItemCount(): Int = coinList.size
 
-    class FirstViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
+    class FirstViewHolder(
+        itemView: View,
+        private val clickListener: (CryptoResponse) -> Unit
+    ) : RecyclerView.ViewHolder(itemView) {
 
         private val name: TextView = itemView.findViewById(R.id.tv_Name)
         private val avatar: ImageView = itemView.findViewById((R.id.iv_Avatar))
@@ -43,6 +47,10 @@ class FirstAdapter(
                 .load(item.image)
                 .placeholder(R.drawable.ic_visibility)
                 .into(avatar)
+
+            itemView.setOnClickListener {
+                clickListener(item)
+            }
         }
     }
 }

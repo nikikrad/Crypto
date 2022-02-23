@@ -12,6 +12,7 @@ import com.example.cryptogecon.databinding.FragmentFirstBinding
 
 class FirstFragment : Fragment() {
 
+    lateinit var itemCoin: CryptoResponse
     lateinit var binding: FragmentFirstBinding
     lateinit var firstViewModel: FirstViewModel
     var responseBody: MutableList<CryptoResponse> = emptyList<CryptoResponse>().toMutableList()
@@ -37,10 +38,15 @@ class FirstFragment : Fragment() {
             }
         })
 
-        val Adapter = FirstAdapter(responseBody)
+        val Adapter = FirstAdapter(responseBody, { description -> itemClickListener(description)})
         binding.rvCrypto.layoutManager =
             LinearLayoutManager(activity?.applicationContext, LinearLayoutManager.VERTICAL, false)
         binding.rvCrypto.adapter = Adapter
+    }
+
+    private fun itemClickListener(crypto: CryptoResponse) {
+        itemCoin = crypto
+        (activity as MainActivity).openFragment(CoinFragment(itemCoin))
     }
 
     override fun onDestroy() {
